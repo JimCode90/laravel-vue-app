@@ -9,6 +9,9 @@
     <meta name="author" content="Incanatoit.com">
     <meta name="keyword" content="Sistema ventas Laravel Vue Js, Sistema compras Laravel Vue Js">
     <link rel="shortcut icon" href="img/favicon.png">
+    <!-- Id for Channel Notification -->
+    <meta name="userId" content="{{ Auth::check() ? Auth::user()->id : ''}}">
+
     <title>Sistema Ventas - IncanatoIT</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Icons -->
@@ -16,6 +19,7 @@
     <link href="css/simple-line-icons.min.css" rel="stylesheet">
     <!-- Main styles for this application -->
     <link href="css/style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
@@ -37,25 +41,9 @@
             </li>
         </ul>
         <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item d-md-down-none">
-                <a class="nav-link" href="#" data-toggle="dropdown">
-                    <i class="icon-bell"></i>
-                    <span class="badge badge-pill badge-danger">5</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-header text-center">
-                        <strong>Notificaciones</strong>
-                    </div>
-                    <a class="dropdown-item" href="#">
-                        <i class="fa fa-envelope-o"></i> Ingresos
-                        <span class="badge badge-success">3</span>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <i class="fa fa-tasks"></i> Ventas
-                        <span class="badge badge-danger">2</span>
-                    </a>
-                </div>
-            </li>
+            <notification :notifications="notifications"></notification>
+
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
                    aria-haspopup="true" aria-expanded="false">
@@ -103,7 +91,7 @@
 </footer>
 
 <!-- Bootstrap and necessary plugins -->
-<script src="{{ asset('js/app.js') }}"></script>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -111,6 +99,8 @@
 <!-- Plugins and scripts required by all views -->
 <script src="js/Chart.min.js"></script>
 <!-- GenesisUI main scripts -->
+
+<script src="{{ asset('js/app.js') }}"></script>
 <script src="js/template.js"></script>
 <script src="{{ asset('js/sweetalert2.all.js') }}"></script>
 

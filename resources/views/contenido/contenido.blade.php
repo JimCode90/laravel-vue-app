@@ -4,7 +4,7 @@
     @if(Auth::check())
         @if (Auth::user()->idrol == 1)
             <template v-if="menu==0">
-                <h1>Escritorio</h1>
+                <dashboard />
             </template>
 
             <template v-if="menu==1">
@@ -16,7 +16,7 @@
             </template>
 
             <template v-if="menu==3">
-                <h1>Ingresos</h1>
+                <ingreso />
             </template>
 
             <template v-if="menu==4">
@@ -24,7 +24,7 @@
             </template>
 
             <template v-if="menu==5">
-                <h1>Ventas</h1>
+                <venta />
             </template>
 
             <template v-if="menu==6">
@@ -40,11 +40,11 @@
             </template>
 
             <template v-if="menu==9">
-                <h1>Reporte ingresos</h1>
+                <consultaingreso />
             </template>
 
             <template v-if="menu==10">
-                <h1>Reporte de ventas</h1>
+                <consultaventa />
             </template>
 
             <template v-if="menu==11">
@@ -56,14 +56,14 @@
             </template>
         @elseif (Auth::user()->idrol == 2)
             <template v-if="menu==5">
-                <h1>Ventas</h1>
+                <venta />
             </template>
 
             <template v-if="menu==6">
                 <cliente></cliente>
             </template>
             <template v-if="menu==10">
-                <h1>Reporte de ventas</h1>
+                <consultaventa />
             </template>
 
             <template v-if="menu==11">
@@ -83,14 +83,14 @@
             </template>
 
             <template v-if="menu==3">
-                <h1>Ingresos</h1>
+                <ingreso />
             </template>
 
             <template v-if="menu==4">
                 <proveedor></proveedor>
             </template>
             <template v-if="menu==9">
-                <h1>Reporte ingresos</h1>
+                <consultaingreso />
             </template>
             <template v-if="menu==11">
                 <h1>Ayuda</h1>

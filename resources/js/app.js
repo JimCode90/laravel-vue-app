@@ -6,6 +6,8 @@
 
 require('./bootstrap');
 
+// window.$ = window.jQuery = require('jquery')
+
 window.Vue = require('vue').default;
 
 /**
@@ -25,6 +27,12 @@ Vue.component('cliente', require('./components/Cliente').default);
 Vue.component('proveedor', require('./components/Proveedor').default);
 Vue.component('rol', require('./components/Rol').default);
 Vue.component('user', require('./components/User').default);
+Vue.component('ingreso', require('./components/Ingreso').default);
+Vue.component('venta', require('./components/Venta').default);
+Vue.component('consultaingreso', require('./components/ConsultaIngreso').default);
+Vue.component('consultaventa', require('./components/ConsultaVenta').default);
+Vue.component('dashboard', require('./components/Dashboard').default);
+Vue.component('notification', require('./components/Notification').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -34,7 +42,27 @@ Vue.component('user', require('./components/User').default);
 
 const app = new Vue({
     el: '#app',
-    data: {
-        menu: 0
+    data :{
+        menu : 0,
+        notifications: []
+    },
+    created() {
+        let me = this;
+        axios.post('notification/get').then(function(response) {
+            //console.log(response.data);
+            me.notifications=response.data;
+        }).catch(function(error) {
+            console.log(error);
+        });
+
+        var userId = $('meta[name="userId"]').attr('content');
+
+        Echo.private('App.User.' + userId).notification((notification) => {
+            console.log('-----------echo-------------')
+            console.log({notification})
+            me.notifications.unshift(notification);
+        });
+
     }
 });
+
