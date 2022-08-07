@@ -2,6 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Administrador;
+use App\Http\Middleware\Almacenero;
+use App\Http\Middleware\Vendedor;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -62,5 +65,9 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'Administrador' => Administrador::class,
+        'Vendedor' => Vendedor::class,
+        'Almacenero' => Almacenero::class,
+
     ];
 }
