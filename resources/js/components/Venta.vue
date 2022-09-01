@@ -518,7 +518,8 @@ export default {
                 });
         },
         pdfVenta(id){
-            window.open('http://laravel-vue-app.test/venta/pdf/'+ id + ',' + '_blank');
+            console.log(id)
+            // window.open('http://laravel-vue-app.test/venta/pdf/'+ id + ',' + '_blank');
         },
         selectCliente(search,loading){
             let me=this;

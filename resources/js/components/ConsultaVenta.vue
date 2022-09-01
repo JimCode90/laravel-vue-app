@@ -277,7 +277,7 @@ export default {
                 });
         },
         pdfVenta(id){
-            window.open('http://localhost:8000/venta/pdf/'+ id + ',' + '_blank');
+            window.open('http://laravel-vue-app.test/venta/pdf/'+ id + ',' + '_blank');
         },
         cambiarPagina(page,buscar,criterio){
             let me = this;
